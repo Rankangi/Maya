@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Graph {
 
@@ -9,7 +10,10 @@ public class Graph {
 	private ArrayList<String> Sn;
 	private int[][] matrice;
 	private String sn;
-
+	private static ArrayList<String> listSuff = new ArrayList<String>();
+	private static ArrayList<String> listPreff = new ArrayList<String>();
+	
+	
 	public Graph(int l, String sn) {
 		this.l = l;
 		this.sn = sn;
@@ -76,8 +80,7 @@ public class Graph {
 	}
 
 	public void afficheMatrice() {
-
-		// System.out.println("\t"+Sn);
+  
 		for (int i = 0; i < s; i++) {
 
 			System.out.println();
@@ -102,4 +105,34 @@ public class Graph {
 
 	}
 
+	public static ArrayList<String> suffixe(ArrayList<String> suf, int l){
+		
+		for(int i = 0; i<suf.size(); i++ ) {
+			
+			String s = suf.get(i);
+			String b =  s.substring(s.length()-l+1, s.length());
+			if(!listSuff.contains(b))
+				listSuff.add(b);
+		};
+		
+		return listSuff;
+		
+	}
+public static ArrayList<String> preffixe(ArrayList<String> pref, int l){
+		
+		for(int i = 0; i<pref.size(); i++ ) {
+			
+			String s = pref.get(i);
+			String b = s.substring(0,l-1);
+			
+			if(!listPreff.contains(b))
+			listPreff.add(b);
+		};
+		
+		return listPreff;
+		
+	}
+	
+	
+	
 }
